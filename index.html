@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | My Personal Website</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: #eeeeee;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND DECORATION
+        ========================== */
+
+        .circle {
+            position: fixed;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(1px);
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle1 {
+            width: 180px;
+            height: 180px;
+            background: #bdbdbd;
+            top: 100px;
+            left: -70px;
+        }
+
+        .circle2 {
+            width: 130px;
+            height: 130px;
+            background: #d0d0d0;
+            right: -40px;
+            top: 350px;
+            animation-delay: 1s;
+        }
+
+        .circle3 {
+            width: 100px;
+            height: 100px;
+            background: #aaa;
+            bottom: 100px;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 8%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .logo span {
+            color: #888;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #999;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           GENERAL
+        ========================== */
+
+        section {
+            min-height: 100vh;
+            padding: 110px 8% 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            font-size: 35px;
+            color: #444;
+        }
+
+        .title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           HOME
+        ========================== */
+
+        #beranda {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .home-text {
+            max-width: 600px;
+            animation: slideLeft 1s ease;
+        }
+
+        .home-text small {
+            background: #d5d5d5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #555;
+        }
+
+        .home-text h1 {
+            font-size: 55px;
+            margin: 20px 0 10px;
+            color: #333;
+        }
+
+        .home-text h1 span {
+            color: #777;
+        }
+
+        .home-text p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #555;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-5px);
+        }
+
+        .btn-outline {
+            border: 2px solid #777;
+            color: #555;
+        }
+
+        .btn-outline:hover {
+            background: #777;
+            color: white;
+        }
+
+        /* Profile illustration */
+
+        .home-image {
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: bounce 4s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 500px;
+            height: 100px;
+        }
+
+        .home-image img{
+           width: 100%;
+           height: 100%;
+        }
+
+        .home-image::before {
+            content: "♡";
+            font-size: 130px;
+            color: #777;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 30px;
+            animation: spin 4s linear infinite;
+        }
+
+        .star1 {
+            top: 10px;
+            right: 20px;
+        }
+
+        .star2 {
+            bottom: 30px;
+            left: 10px;
+            animation-delay: 1s;
+        }
+
+        @keyframes bounce {
+            0%,100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(3deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.3);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* =========================
+           PROFILE
+        ========================== */
+
+        .profile-box {
+            max-width: 850px;
+            margin: auto;
+            background: rgba(255,255,255,0.8);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: 0.4s;
+        }
+
+        .profile-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .profile-box p {
+            line-height: 1.9;
+            color: #666;
+            text-align: center;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================== */
+
+        .experience-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) rotate(1deg);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .bar {
+            width: 100%;
+            height: 12px;
+            background: #d5d5d5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #666;
+            border-radius: 20px;
+            animation: progress 2s ease;
+        }
+
+        .html {
+            width: 90%;
+        }
+
+        .css {
+            width: 80%;
+        }
+
+        .js {
+            width: 65%;
+        }
+
+        .design {
+            width: 75%;
+        }
+
+        @keyframes progress {
+            from {
+                width: 0;
+            }
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .input-box {
+            margin-bottom: 18px;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus,
+        .input-box textarea:focus {
+            border-color: #777;
+            transform: scale(1.02);
+        }
+
+        textarea {
+            resize: none;
+            height: 130px;
+        }
+
+        .send {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            background: #555;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .send:hover {
+            background: #333;
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #555;
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            .menu {
+                gap: 10px;
+                font-size: 12px;
+            }
+
+            #beranda {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .home-text h1 {
+                font-size: 40px;
+            }
+
+            .home-image {
+                width: 230px;
+                height: 230px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .experience-container {
+                grid-template-columns: 1fr;
+            }
+
+            .title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <div class="logo">
+                My<span>Portfolio</span> ♡
+            </div>
+
+            <ul class="menu">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- BERANDA -->
+    <section id="beranda">
+
+        <div class="home-text">
+
+            <small>♡ Welcome to my portfolio</small>
+
+            <h1>
+                Hai, Aku <span>Wulan</span> 👋
+            </h1>
+
+            <p>
+                Selamat datang di website portfolio saya.
+                Di sini kamu bisa melihat profil, pengalaman,
+                keahlian, dan informasi kontak saya.
+            </p>
+
+            <div class="buttons">
+                <a href="#profil" class="btn btn-primary">
+                    Lihat Profil
+                </a>
+
+                <a href="#kontak" class="btn btn-outline">
+                    Hubungi Saya
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="home-image">
+            <img src="gambar.jpeg" alt="">
+            </div>
+
+            <div class="star star1">✦</div>
+            <div class="star star2">♡</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFIL -->
+    <section id="profil">
+
+        <div class="title">
+            <h2>♡ Profil Saya</h2>
+            <p>Sedikit tentang saya</p>
+        </div>
+
+        <div class="profile-box">
+
+            <p>
+                Halo! Nama saya <b>Wulan</b>.
+                Saya adalah seseorang yang tertarik dengan dunia
+                teknologi, desain, dan pembuatan website.
+                Saya senang mempelajari hal-hal baru dan
+                mengembangkan kemampuan saya melalui berbagai
+                proyek.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PENGALAMAN -->
+    <section id="pengalaman">
+
+        <div class="title">
+            <h2>♡ Pengalaman</h2>
+            <p>Beberapa pengalaman saya</p>
+        </div>
+
+        <div class="experience-container">
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Web Design</h3>
+                <p>
+                    Membuat desain website sederhana
+                    menggunakan HTML dan CSS.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>UI Design</h3>
+                <p>
+                    Membuat tampilan antarmuka yang
+                    sederhana dan menarik.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+                <h3>Project Sekolah</h3>
+                <p>
+                    Mengerjakan berbagai project
+                    teknologi dan pemrograman.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KEAHLIAN -->
+    <section id="keahlian">
+
+        <div class="title">
+            <h2>♡ Keahlian</h2>
+            <p>Kemampuan yang sedang saya kembangkan</p>
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">
+                <div class="skill-name">
+                    <span>HTML</span>
+                    <span>55%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="progress html"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    <span>CSS</span>
+                    <span>50%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="progress css"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    <span>figma</span>
+                    <span>65%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="progress js"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    <span>matematika</span>
+                    <span>70%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="progress design"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KONTAK -->
+    <section id="kontak">
+
+        <div class="title">
+            <h2>♡ Kontak</h2>
+            <p>Yuk, terhubung dengan saya!</p>
+        </div>
+
+        <div class="contact-box">
+
+            <div class="input-box">
+                <input type="text" placeholder="Nama kamu">
+            </div>
+
+            <div class="input-box">
+                <input type="email" placeholder="Email kamu">
+            </div>
+
+            <div class="input-box">
+                <textarea placeholder="Tulis pesan..."></textarea>
+            </div>
+
+            <button class="send" onclick="kirimPesan()">
+                Kirim Pesan ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Made with ♡ by Wulan
+        </p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function kirimPesan() {
+
+            alert(
+                "Pesan kamu berhasil dikirim! ♡"
+            );
+
+        }
+
+
+        // Efek muncul ketika halaman discroll
+        const cards = document.querySelectorAll(".card");
+
+        window.addEventListener("scroll", () => {
+
+            cards.forEach(card => {
+
+                const position =
+                    card.getBoundingClientRect().top;
+
+                const screenPosition =
+                    window.innerHeight / 1.2;
+
+                if (position < screenPosition) {
+
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
